@@ -1,0 +1,545 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={final project},
+  pdfauthor={Leena Chowdary},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{final project}
+\author{Leena Chowdary}
+\date{2023-04-13}
+
+\begin{document}
+\maketitle
+
+\#reading the data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load required packages}
+\FunctionTok{library}\NormalTok{(dplyr)    }\CommentTok{\# For data manipulation}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl)  }\CommentTok{\# For reading Excel files}
+\FunctionTok{library}\NormalTok{(ggplot2)  }\CommentTok{\# For data visualization}
+
+
+\CommentTok{\# Load the data from Excel file}
+\NormalTok{file\_path }\OtherTok{\textless{}{-}} \StringTok{"C:/Users/kavur/OneDrive/Desktop/Advanced R/final project/statistics{-}clinical{-}20201221.xlsx"}  \CommentTok{\# Update with your file path}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(file\_path)}
+
+\CommentTok{\# Perform basic data cleaning and preprocessing}
+\CommentTok{\# For example, removing unnecessary columns and renaming columns for better readability}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{select}\NormalTok{(df, }\SpecialCharTok{{-}}\NormalTok{No.)}
+\FunctionTok{colnames}\NormalTok{(df) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"PatientID"}\NormalTok{, }\StringTok{"Sex"}\NormalTok{, }\StringTok{"Age"}\NormalTok{, }\StringTok{"Weight"}\NormalTok{, }\StringTok{"T\_Stage"}\NormalTok{, }\StringTok{"N\_Stage"}\NormalTok{, }\StringTok{"M\_Stage"}\NormalTok{, }\StringTok{"Histopath\_Grading"}\NormalTok{, }\StringTok{"Smoking\_History"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{perform-exploratory-data-analysis-eda}{%
+\section{Perform exploratory data analysis
+(EDA)}\label{perform-exploratory-data-analysis-eda}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# For example, checking data summary, generating plots, etc.}
+\FunctionTok{summary}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Age)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##   28.00   55.00   62.00   61.24   68.00   90.00       1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##   35.50   57.65   65.00   65.32   72.75  103.00       4
+\end{verbatim}
+
+age: Min. 1st Qu. Median Mean 3rd Qu. Max. NA's 28.00 55.00 62.00 61.24
+68.00 90.00 1
+
+weight Min. 1st Qu. Median Mean 3rd Qu. Max. NA's 35.50 57.65 65.00
+65.32 72.75 103.00 4
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Remove rows with missing values in "Age" and "Weight" columns}
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ df[}\FunctionTok{complete.cases}\NormalTok{(df[}\FunctionTok{c}\NormalTok{(}\StringTok{"Age"}\NormalTok{, }\StringTok{"Weight"}\NormalTok{)]), ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# Verify that df is a data frame and has the correct column names}
+\FunctionTok{str}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## tibble [350 x 9] (S3: tbl_df/tbl/data.frame)
+##  $ PatientID        : chr [1:350] "A0001" "A0002" "A0003" "A0004" ...
+##  $ Sex              : chr [1:350] "M" "F" "M" "F" ...
+##  $ Age              : num [1:350] 58 53 60 48 70 36 69 66 59 57 ...
+##  $ Weight           : num [1:350] 65 55 62 56 75 57 74 60.5 75 53 ...
+##  $ T_Stage          : chr [1:350] "2b" "2b" "1c" "1c" ...
+##  $ N_Stage          : num [1:350] 3 1 1 3 0 2 0 0 3 3 ...
+##  $ M_Stage          : chr [1:350] "1b" "0" "0" "0" ...
+##  $ Histopath_Grading: chr [1:350] "G3" NA "G3" NA ...
+##  $ Smoking_History  : num [1:350] 1 0 0 0 1 0 1 0 0 0 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{Histopath\_Grading , }\AttributeTok{fill =}\NormalTok{Smoking\_History )) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =}\StringTok{"Proportion"}\NormalTok{ , }\AttributeTok{y =} \StringTok{"Smoking History"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Bar plot of Smoking History by Lung Cancer"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The following aesthetics were dropped during statistical transformation: fill
+## i This can happen when ggplot fails to infer the correct grouping structure in
+##   the data.
+## i Did you forget to specify a `group` aesthetic or to convert a numerical
+##   variable into a factor?
+\end{verbatim}
+
+\includegraphics{finalproject_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Smoking\_History , }\AttributeTok{y =}\NormalTok{ Weight, }\AttributeTok{fill =}\NormalTok{ Sex)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Smoking History"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Weight"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Boxplot of Weight by Smoking History"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalproject_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create age groups}
+\NormalTok{age\_breaks }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{, }\DecValTok{70}\NormalTok{, }\ConstantTok{Inf}\NormalTok{) }\CommentTok{\# Define the age group breaks}
+\NormalTok{age\_labels }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"0{-}18"}\NormalTok{, }\StringTok{"18{-}30"}\NormalTok{, }\StringTok{"30{-}40"}\NormalTok{, }\StringTok{"40{-}50"}\NormalTok{, }\StringTok{"50{-}60"}\NormalTok{, }\StringTok{"60{-}70"}\NormalTok{, }\StringTok{"70+"}\NormalTok{)}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Age\_Group }\OtherTok{\textless{}{-}} \FunctionTok{cut}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Age, }\AttributeTok{breaks =}\NormalTok{ age\_breaks, }\AttributeTok{labels =}\NormalTok{ age\_labels)}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Age\_Group}\OtherTok{\textless{}{-}}\FunctionTok{as.factor}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Age\_Group)}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Smoking\_History}\OtherTok{\textless{}{-}}\FunctionTok{as.factor}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Smoking\_History)}
+
+\CommentTok{\# Plot data based on age groups}
+
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Age\_Group, }\AttributeTok{y =}\NormalTok{ Weight, }\AttributeTok{color =}\NormalTok{ Smoking\_History)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Age Group"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Weight"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Boxplot of Weight by Age Group with Smoking History"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalproject_files/figure-latex/unnamed-chunk-4-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Perform feature engineering}
+\CommentTok{\# For example, calculating BMI from weight and age}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{BMI }\OtherTok{\textless{}{-}}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{Weight }\SpecialCharTok{/}\NormalTok{ ((df}\SpecialCharTok{$}\NormalTok{Age }\SpecialCharTok{/} \DecValTok{100}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Smoking\_History, }\AttributeTok{fill =}\NormalTok{ )) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{"fill"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Smoking History"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Proportion"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Bar plot of Smoking History by Lung Cancer"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalproject_files/figure-latex/unnamed-chunk-4-4.pdf}
+
+\hypertarget{perform-statistical-analysis}{%
+\section{Perform statistical
+analysis}\label{perform-statistical-analysis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# For example, conducting t{-}tests to compare BMI between different groups}
+\FunctionTok{t.test}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{BMI[df}\SpecialCharTok{$}\NormalTok{Smoking\_History }\SpecialCharTok{==} \DecValTok{0}\NormalTok{], df}\SpecialCharTok{$}\NormalTok{BMI[df}\SpecialCharTok{$}\NormalTok{Smoking\_History }\SpecialCharTok{==} \DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  df$BMI[df$Smoking_History == 0] and df$BMI[df$Smoking_History == 1]
+## t = 3.1182, df = 323.58, p-value = 0.001983
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  10.67732 47.18173
+## sample estimates:
+## mean of x mean of y 
+##  205.1750  176.2455
+\end{verbatim}
+
+\hypertarget{data-analysis-on-smoking-analysis}{%
+\section{data analysis on smoking
+analysis}\label{data-analysis-on-smoking-analysis}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Perform chi{-}squared test for smoking history and T{-}Stage}
+\NormalTok{chi\_square\_result\_tstage }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Smoking\_History, df}\SpecialCharTok{$}\NormalTok{T\_Stage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(df$Smoking_History, df$T_Stage): Chi-squared approximation
+## may be incorrect
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(chi\_square\_result\_tstage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  df$Smoking_History and df$T_Stage
+## X-squared = 23.041, df = 9, p-value = 0.006105
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Perform chi{-}squared test for smoking history and N{-}Stage}
+\NormalTok{chi\_square\_result\_nstage }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Smoking\_History, df}\SpecialCharTok{$}\NormalTok{N\_Stage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(df$Smoking_History, df$N_Stage): Chi-squared approximation
+## may be incorrect
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(chi\_square\_result\_nstage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  df$Smoking_History and df$N_Stage
+## X-squared = 5.8774, df = 3, p-value = 0.1177
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Perform chi{-}squared test for smoking history and M{-}Stage}
+\NormalTok{chi\_square\_result\_mstage }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Smoking\_History, df}\SpecialCharTok{$}\NormalTok{M\_Stage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(df$Smoking_History, df$M_Stage): Chi-squared approximation
+## may be incorrect
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(chi\_square\_result\_mstage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  df$Smoking_History and df$M_Stage
+## X-squared = 9.5308, df = 6, p-value = 0.1459
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Perform chi{-}squared test for smoking history and Histopathological grading}
+\NormalTok{chi\_square\_result\_histopath\_grade }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Smoking\_History, df}\SpecialCharTok{$}\NormalTok{Histopath\_Grading)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(df$Smoking_History, df$Histopath_Grading): Chi-squared
+## approximation may be incorrect
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(chi\_square\_result\_histopath\_grade)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  df$Smoking_History and df$Histopath_Grading
+## X-squared = 7.6552, df = 6, p-value = 0.2645
+\end{verbatim}
+
+ML modeling
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# For example, training a simple logistic regression model for predicting smoking history}
+\CommentTok{\#library(caret)     \# For machine learning}
+\FunctionTok{library}\NormalTok{(glmnet)    }\CommentTok{\# For logistic regression}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'glmnet' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: Matrix
+\end{verbatim}
+
+\begin{verbatim}
+## Loaded glmnet 4.1-7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert smoking history to a binary factor variable}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Smoking\_History }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Smoking\_History)}
+\CommentTok{\# Assuming that "Na" indicates absence of lung cancer and other values indicate presence of lung cancer}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Outcome }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Histopath\_Grading), }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Split data into training and testing sets}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)     }\CommentTok{\# For reproducibility}
+\NormalTok{train\_indices }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(df), }\FunctionTok{nrow}\NormalTok{(df) }\SpecialCharTok{*} \FloatTok{0.8}\NormalTok{)}
+\NormalTok{train\_data }\OtherTok{\textless{}{-}}\NormalTok{ df[train\_indices, ]}
+\NormalTok{test\_data }\OtherTok{\textless{}{-}}\NormalTok{ df[}\SpecialCharTok{{-}}\NormalTok{train\_indices, ]}
+\CommentTok{\# Train a logistic regression model}
+
+\CommentTok{\# Fit the logistic regression model}
+\NormalTok{model1 }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(Outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Age }\SpecialCharTok{+}\NormalTok{ Weight }\SpecialCharTok{+}\NormalTok{ Smoking\_History, }\AttributeTok{data =}\NormalTok{ df, }\AttributeTok{family =} \StringTok{"binomial"}\NormalTok{)}
+
+\CommentTok{\# Make predictions on the test data}
+\NormalTok{predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model1, }\AttributeTok{newdata =}\NormalTok{ test\_data, }\AttributeTok{type =} \StringTok{"response"}\NormalTok{)}
+
+\CommentTok{\# Convert predicted probabilities to binary outcomes}
+\NormalTok{predicted\_outcome }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(predictions }\SpecialCharTok{\textgreater{}} \FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\CommentTok{\# Generate confusion matrix}
+\NormalTok{confusion }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(predicted\_outcome, test\_data}\SpecialCharTok{$}\NormalTok{Outcome)}
+
+\CommentTok{\# Print the confusion matrix}
+\FunctionTok{print}\NormalTok{(confusion)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  
+## predicted_outcome  0  1
+##                 0 46 24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{accuracy }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{diag}\NormalTok{(confusion)) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(confusion)}
+\NormalTok{accuracy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6571429
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Perform CART analysis}
+\CommentTok{\# For example, building a classification tree to predict Smoking History based on Age, Weight, and Histopathological Grading}
+\CommentTok{\# Convert Smoking History to a binary factor variable}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{Smoking\_History }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{Smoking\_History)}
+\FunctionTok{library}\NormalTok{(rpart)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'rpart' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Split data into training and testing sets}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{3}\NormalTok{)     }\CommentTok{\# For reproducibility}
+\NormalTok{train\_indices }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(df), }\FunctionTok{nrow}\NormalTok{(df) }\SpecialCharTok{*} \FloatTok{0.8}\NormalTok{)}
+\NormalTok{train\_data }\OtherTok{\textless{}{-}}\NormalTok{ df[train\_indices, ]}
+\NormalTok{test\_data }\OtherTok{\textless{}{-}}\NormalTok{ df[}\SpecialCharTok{{-}}\NormalTok{train\_indices, ]}
+\CommentTok{\# Train a classification tree}
+\NormalTok{model2 }\OtherTok{\textless{}{-}} \FunctionTok{rpart}\NormalTok{(Histopath\_Grading }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Age }\SpecialCharTok{+}\NormalTok{ Weight }\SpecialCharTok{+}\NormalTok{ Smoking\_History, }\AttributeTok{data =}\NormalTok{ train\_data, }\AttributeTok{method =} \StringTok{"class"}\NormalTok{)}
+
+
+\CommentTok{\# Visualize the tree}
+\CommentTok{\#par(xpd = NA)}
+\CommentTok{\#plot(model2, box.palette = c("red", "blue"),}
+\CommentTok{\#           fallen.leaves = TRUE, under = TRUE, faclen = 0)}
+
+\CommentTok{\# Add class labels to the plot}
+\CommentTok{\#text(model2, use.n = TRUE, all = TRUE, cex = 0.8)}
+\CommentTok{\# Make predictions on the testing set}
+\NormalTok{predictions }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model2, }\AttributeTok{newdata =}\NormalTok{ test\_data, }\AttributeTok{type =} \StringTok{"class"}\NormalTok{)}
+\CommentTok{\# Evaluate model performance}
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(predictions, test\_data}\SpecialCharTok{$}\NormalTok{Histopath\_Grading)}
+\NormalTok{confusion\_matrix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            
+## predictions G1 G1-2 G1-G2 G2 G2-3 G2-G3 G3
+##       G1     0    0     0  1    1     0  1
+##       G1-2   0    0     0  0    0     0  0
+##       G1-G2  0    0     0  0    0     0  0
+##       G2     0    1     0  0    0     0  0
+##       G2-3   0    0     0  0    2     0  2
+##       G3     2    1     1  4    5     1  7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate accuracy}
+\NormalTok{accuracy }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{diag}\NormalTok{(confusion\_matrix)) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(confusion\_matrix)}
+\NormalTok{accuracy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1034483
+\end{verbatim}
+
+\end{document}

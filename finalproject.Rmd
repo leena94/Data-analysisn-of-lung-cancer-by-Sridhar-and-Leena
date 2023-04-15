@@ -1,0 +1,187 @@
+---
+title: "Final project"
+author: "leena","Sridhar"
+date: "2023-04-13"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#reading the data 
+```{r}
+# Load required packages
+library(dplyr)    # For data manipulation
+library(readxl)  # For reading Excel files
+library(ggplot2)  # For data visualization
+
+
+# Load the data from Excel file
+file_path <- "C:/Users/kavur/OneDrive/Desktop/Advanced R/final project/statistics-clinical-20201221.xlsx"  # Update with your file path
+df <- read_excel(file_path)
+
+# Perform basic data cleaning and pre-processing
+# For example, removing unnecessary columns and renaming columns for better readability
+df <- select(df, -No.)
+colnames(df) <- c("PatientID", "Sex", "Age", "Weight", "T_Stage", "N_Stage", "M_Stage", "Histopath_Grading", "Smoking_History")
+```
+# Perform exploratory data analysis (EDA)
+```{r}
+# For example, checking data summary, generating plots, etc.
+summary(df$Age)
+summary(df$Weight)
+```
+age:
+Min.    1st Qu. Median  Mean    3rd Qu. Max.    NA's 
+28.00   55.00   62.00   61.24   68.00   90.00   1 
+
+weight 
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+35.50   57.65   65.00   65.32   72.75  103.00       4 
+```{r}
+# Remove rows with missing values in "Age" and "Weight" columns
+df <- df[complete.cases(df[c("Age", "Weight")]), ]
+```
+
+```{r}
+library(ggplot2)
+
+# Verify that df is a data frame and has the correct column names
+str(df)
+
+ggplot(df, aes(x =Histopath_Grading , fill =Smoking_History )) +
+  geom_bar(position = "fill") +
+  labs(x ="Proportion" , y = "Smoking History", title = "Bar plot of Smoking History by Lung Cancer")
+
+
+
+ggplot(df, aes(x = Smoking_History , y = Weight, fill = Sex)) +
+  geom_boxplot() +
+  labs(x = "Smoking History", y = "Weight", title = "Boxplot of Weight by Smoking History")
+
+
+
+
+# Create age groups
+age_breaks <- c(0, 18, 30, 40, 50, 60, 70, Inf) # Define the age group breaks
+age_labels <- c("0-18", "18-30", "30-40", "40-50", "50-60", "60-70", "70+")
+df$Age_Group <- cut(df$Age, breaks = age_breaks, labels = age_labels)
+df$Age_Group<-as.factor(df$Age_Group)
+df$Smoking_History<-as.factor(df$Smoking_History)
+
+# Plot data based on age groups
+
+ggplot(df, aes(x = Age_Group, y = Weight, color = Smoking_History)) +
+  geom_boxplot() +
+  labs(x = "Age Group", y = "Weight", title = "Boxplot of Weight by Age Group with Smoking History")
+
+
+# Perform feature engineering
+# For example, calculating BMI from weight and age
+df$BMI <- df$Weight / ((df$Age / 100)^2)
+
+ggplot(df, aes(x = Smoking_History, fill = )) +
+  geom_bar(position = "fill") +
+  labs(x = "Smoking History", y = "Proportion", title = "Bar plot of Smoking History by Lung Cancer")
+
+
+
+```
+
+# Perform statistical analysis
+
+```{r}
+# For example, conducting t-tests to compare BMI between different groups
+t.test(df$BMI[df$Smoking_History == 0], df$BMI[df$Smoking_History == 1])
+```
+# data analysis  on smoking analysis
+```{r}
+# Perform chi-squared test for smoking history and T-Stage
+chi_square_result_tstage <- chisq.test(df$Smoking_History, df$T_Stage)
+print(chi_square_result_tstage)
+
+# Perform chi-squared test for smoking history and N-Stage
+chi_square_result_nstage <- chisq.test(df$Smoking_History, df$N_Stage)
+print(chi_square_result_nstage)
+
+# Perform chi-squared test for smoking history and M-Stage
+chi_square_result_mstage <- chisq.test(df$Smoking_History, df$M_Stage)
+print(chi_square_result_mstage)
+
+# Perform chi-squared test for smoking history and Histopathological grading
+chi_square_result_histopath_grade <- chisq.test(df$Smoking_History, df$Histopath_Grading)
+print(chi_square_result_histopath_grade)
+
+```
+
+ML modeling
+```{r}
+# For example, training a simple logistic regression model for predicting smoking history
+#library(caret)     # For machine learning
+library(glmnet)    # For logistic regression
+# Convert smoking history to a binary factor variable
+df$Smoking_History <- as.factor(df$Smoking_History)
+# Assuming that "Na" indicates absence of lung cancer and other values indicate presence of lung cancer
+df$Outcome <- ifelse(is.na(df$Histopath_Grading), 0, 1)
+
+# Split data into training and testing sets
+set.seed(123)     # For reproducibility
+train_indices <- sample(1:nrow(df), nrow(df) * 0.8)
+train_data <- df[train_indices, ]
+test_data <- df[-train_indices, ]
+# Train a logistic regression model
+
+# Fit the logistic regression model
+model1 <- glm(Outcome ~ Age + Weight + Smoking_History, data = df, family = "binomial")
+
+# Make predictions on the test data
+predictions <- predict(model1, newdata = test_data, type = "response")
+
+# Convert predicted probabilities to binary outcomes
+predicted_outcome <- ifelse(predictions > 0.5, 1, 0)
+
+# Generate confusion matrix
+confusion <- table(predicted_outcome, test_data$Outcome)
+
+# Print the confusion matrix
+print(confusion)
+
+accuracy <- sum(diag(confusion)) / sum(confusion)
+accuracy
+
+# Perform CART analysis
+# For example, building a classification tree to predict Smoking History based on Age, Weight, and Histopathological Grading
+# Convert Smoking History to a binary factor variable
+df$Smoking_History <- as.factor(df$Smoking_History)
+library(rpart)
+# Split data into training and testing sets
+set.seed(3)     # For reproducibility
+train_indices <- sample(1:nrow(df), nrow(df) * 0.8)
+train_data <- df[train_indices, ]
+test_data <- df[-train_indices, ]
+# Train a classification tree
+model2 <- rpart(Histopath_Grading ~ Age + Weight + Smoking_History, data = train_data, method = "class")
+
+
+# Visualize the tree
+#par(xpd = NA)
+#plot(model2, box.palette = c("red", "blue"),
+#           fallen.leaves = TRUE, under = TRUE, faclen = 0)
+
+# Add class labels to the plot
+#text(model2, use.n = TRUE, all = TRUE, cex = 0.8)
+# Make predictions on the testing set
+predictions <- predict(model2, newdata = test_data, type = "class")
+# Evaluate model performance
+confusion_matrix <- table(predictions, test_data$Histopath_Grading)
+confusion_matrix
+# Calculate accuracy
+accuracy <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
+accuracy
+
+```
+
+
